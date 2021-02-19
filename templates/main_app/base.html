@@ -1,0 +1,15 @@
+{% extends 'auth/base.html' %}
+
+{% block content %}
+
+<h2><p>Hello from base!</p></h2>
+<p>Username: {{ user.first_name }}</p>
+<hr>
+<p>Portfolio: {{ port }}</p>
+<hr>
+<p>Asset Name: {% for i in asset %} <li>{{ i.count }}-{{ i.name }} : ID:{{ i.id }} : current price ${{ i.price }}  </li>{% endfor %} : Value: {{ net }} </p>
+<hr>
+<p>Net Worth: ${{ net }}</p>
+<p>Principal: ${{ principal }}</p>
+
+{% endblock %}

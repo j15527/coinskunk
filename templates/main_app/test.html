@@ -1,0 +1,16 @@
+{% extends 'auth/base.html' %}
+
+{% block content %}
+    <h2 class="text-center"><p>Test Page</p></h2>
+{#    <p>{{ data }}</p>#}
+    <p>{{ user }}</p>
+    <p id="new-data">e </p>
+
+
+    {% load static %}
+    <script>
+    let price = '{{ data|safe }}';
+    </script>
+<script src="{% static "js/test.js" %}"></script>
+{% endblock %}
+
