@@ -9,7 +9,7 @@ logging.getLogger("cryptowatch").setLevel(logging.DEBUG)
 # Set your API Key
 # cw.api_key = "XXXXXXXXXXXXXXXXXXXX"
 
-cw.stream.subscriptions = ["markets:1:trades", "markets:1:ohlc", "assets:60:book:snapshots"]
+# cw.stream.subscriptions = ["markets:1:trades", "markets:1:ohlc", "assets:60:book:snapshots"]
 # cw.stream.subscriptions = ["assets:60:book:snapshots"]
 # cw.stream.subscriptions = ["assets:60:book:spread"]
 # cw.stream.subscriptions = ["assets:60:book:deltas"]
@@ -58,7 +58,7 @@ cw.stream.on_orderbook_delta_update = handle_orderbook_delta_updates
 
 
 # Start receiving
-cw.stream.connect()
+# cw.stream.connect()
 
 
 # Stop receiving

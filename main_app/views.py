@@ -29,7 +29,7 @@ def index2(request):
     return render(request, "main_app/index.html", {}, )
 
 
-def test_page(request):
+def test_page(request):  # A diagnostic page to view incoming and db update data
     user = request.user
     assets = user.portfolio_set.first().assets.all()
     data = serializers.serialize("json", assets)
@@ -55,3 +55,36 @@ def index(request):
 
     }
     return render(request, 'main_app/index.html', context)
+
+
+# noinspection DuplicatedCode
+@login_required
+def profile(request):
+    user = request.user
+
+    context = {
+        'user': user,
+        'port': user.portfolio_set.first(),
+        'value': user.portfolio_set.first().value,
+        'net': user.portfolio_set.first().net_worth(),
+        'asset': user.portfolio_set.first().assets.all(),
+        'principal': user.portfolio_set.first().principal_sum
+
+    }
+    return render(request, 'main_app/profile.html', context)
+
+
+@login_required
+def my_assets(request):
+    user = request.user
+
+    context = {
+        'user': user,
+        'port': user.portfolio_set.first(),
+        'value': user.portfolio_set.first().value,
+        'net': user.portfolio_set.first().net_worth(),
+        'asset': user.portfolio_set.first().assets.all(),
+        'principal': user.portfolio_set.first().principal_sum
+
+    }
+    return render(request, "main_app/assets.html", context)
