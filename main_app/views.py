@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 # from nomics import Nomics
 from . import testdata
 from django.core import serializers
+from . import testdata as td
+
+from cryptocompy.price import get_current_trading_info, get_current_price
 
 KEY = "key=6fefbc3e132ad0009443f5be19ce5a3a"
 MY_NOMICS_KEY = "6fefbc3e132ad0009443f5be19ce5a3a"
@@ -30,12 +33,15 @@ def index2(request):
 
 
 def test_page(request):  # A diagnostic page to view incoming and db update data
+
     user = request.user
     assets = user.portfolio_set.first().assets.all()
-    data = serializers.serialize("json", assets)
 
     context = {
-        'data': data,
+        'assets': assets,
+        'user': user,
+        'net': user.portfolio_set.first().net_worth(),
+
     }
     return render(request, "main_app/test.html", context)
 
