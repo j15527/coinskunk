@@ -45,7 +45,7 @@
                     mx-auto text-center py-3 mb-4 bottom-border" >CoinSkunk</a>
                     <div class="bottom-border pb-3">
                         {% load static %}
-                        <img src="{% static '/img/skunk-coin.jpg' %}" width="60" class="rounded-circle mr-3" alt="">
+                        <img src="{{ profile_pic }}" width="60" class="rounded-circle mr-3" alt="">
                         <a href="{% url 'profile' %}" class="text-white" >{{ user.username }}</a>
                     </div>
 

@@ -6,3 +6,6 @@ requests~=2.25.1
 krakenex~=2.1.0
 pykrakenapi~=0.1.9
 cryptocompy~=0.1.1.dev1
+Twisted~=20.3.0
+Jinja2~=2.11.3
+Babel~=2.9.0

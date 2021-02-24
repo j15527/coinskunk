@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5c519d2-9783-4ac3-9ecc-5e89b641a26d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/coinskunk.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_app/Update_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CoinSkunk.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="b5c519d2-9783-4ac3-9ecc-5e89b641a26d" name="Default Changelist" comment="Refactored update_data.py">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/testdata.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/testdata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/update_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/update_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main_app/_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main_app/_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main_app/assets.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main_app/assets.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main_app/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main_app/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +42,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/main_app" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="coinskunk" type="Python.DjangoServer" factoryName="Django server">
@@ -85,8 +85,24 @@
       <workItem from="1614020540621" duration="9996000" />
       <workItem from="1614031220132" duration="147000" />
       <workItem from="1614031376689" duration="473000" />
-      <workItem from="1614041238379" duration="7432000" />
+      <workItem from="1614041238379" duration="11919000" />
+      <workItem from="1614127151533" duration="13155000" />
     </task>
+    <task id="LOCAL-00001" summary="Update">
+      <created>1614053956715</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614053956715</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactored update_data.py">
+      <created>1614054107772</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614054107772</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,5 +119,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update" />
+    <MESSAGE value="Refactored update_data.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored update_data.py" />
   </component>
 </project>

@@ -1,56 +1,56 @@
 from django.shortcuts import render
+import main_app
 from .models import Portfolio, Asset
 # from django.contrib.auth.models import User
 from django.contrib import auth
 import json
 import requests
+import urllib.request
 from django.contrib.auth.decorators import login_required
-# from nomics import Nomics
+from . import asset_search as search
 from . import testdata
 from django.core import serializers
 from . import testdata as td
-
+from django.http import JsonResponse, response
 from cryptocompy.price import get_current_trading_info, get_current_price
 
-KEY = "key=6fefbc3e132ad0009443f5be19ce5a3a"
-MY_NOMICS_KEY = "6fefbc3e132ad0009443f5be19ce5a3a"
-URL = f"https://api.nomics.com/v1/currencies/ticker?{KEY}&interval=1d,30d&per-page=100&page=1"
 
-
-def index2(request):
-    # api_request = requests.get(URL)  # type class requests.models.Response
-    # coins = nomics.Currencies.get_currencies(ids="BTC, ETH")
-    # results = Asset.objects.all()
-    # tasks.db_update()
-    # try:
-    # api = json.loads(api_request.content)  # type list
-    # markets = nomics.Markets.get_markets(exchange='binance')
-    # api_request.content type bytes
-    # api = api_request.json()# list
-    # except Exception as e:
-    # api = "Error..."
-    return render(request, "main_app/index.html", {}, )
+profile_URL = "https://randomuser.me/api/"
 
 
 def test_page(request):  # A diagnostic page to view incoming and db update data
-
-    user = request.user
-    assets = user.portfolio_set.first().assets.all()
+    #
+    #     user = request.user
+    #     assets = user.portfolio_set.first().assets.all()
+    #
+    #     context = {
+    #         'assets': assets,
+    #         'user': user,
+    #         'net': user.portfolio_set.first().net_worth(),
+    #
+    #     }
+    coin = 'dash'
+    fiat = "USD"
+    result = search.coin_search(coin)
 
     context = {
-        'assets': assets,
-        'user': user,
-        'net': user.portfolio_set.first().net_worth(),
-
+        'name': result['name'],
+        'price': result['price'],
+        'desc': result['desc'],
+        'img': result['img'],
     }
+
     return render(request, "main_app/test.html", context)
 
 
 @login_required
 def index(request):
+    data = requests.get(profile_URL, {'results': 'gender'})
+    response = data.json()
+    pic = response['results'][0]['picture']['large']
     user = request.user
-
     context = {
+        'profile_pic': pic,
         'user': user,
         'port': user.portfolio_set.first(),
         'value': user.portfolio_set.first().value,
@@ -83,7 +83,6 @@ def profile(request):
 @login_required
 def my_assets(request):
     user = request.user
-
     context = {
         'user': user,
         'port': user.portfolio_set.first(),
