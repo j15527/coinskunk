@@ -1,6 +1,8 @@
 body{
     font-family: 'Montserrat', sans-serif;
     background-color: #eee;
+    position: relative;
+    min-height: 100vh;
 
 }
 
@@ -42,6 +44,7 @@ body{
 }
 
 .search-input{
+    color: white;
     background: transparent;
     border:none;
     border-radius: 0;
@@ -105,5 +108,12 @@ body{
 .card-common:hover{
     box-shadow: 2px 3px 15px #999;
     transform: translateY(-1px);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1.5rem;            /* Footer height */
 }
 

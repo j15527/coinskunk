@@ -14,70 +14,39 @@
                                 <div class="text-left text-secondary">
                                     <h2>Net Worth</h2>
                                     <h4>${{ net }}</h4>
-                                    <p class="text-left"> <b>Holdings:</b> {{ asset.first.name }}</p>
+                                    <p class="text-left"> <b>Assets:</b> {{ asset.count }}</p>
                                 </div>
                                 </div>
-                                </div>
+                            </div>
                             <div class="card-footer text-secondary">
                                 <i class="fas fa-sync mr-3"></i>
                                 <span>Update now</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 p-2">
+                    {% for i in asset %}
+                        <div class="col-xl-3 col-sm-6 p-2">
                          <div class="card card-common">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                      <i class="fas fa-chart-bar fa-3x text-warning"></i>
                                 <div class="text-right text-secondary">
-                                    <p><b>Volume: </b> 65,325,487,112</p>
-                                    <p><b>Supply: </b>21M</p>
-                                    <p><b>Market Cap: </b>571.692B </p>
+                                    <p><b>Asset: </b> {{ i.name }}</p>
+                                    <p><b>Price </b>{{ i.price }}</p>
+                                    <p><b>Holding: </b>{{ i.count }} </p>
                                 </div>
                                 </div>
                                 </div>
                             <div class="card-footer text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Update now</span>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#buy">Buy</button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#sell">Sell</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 p-2">
-                         <div class="card card-common">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                     <i class="fas fa-chart-line fa-3x text-warning"></i>
-                                <div class="text-right text-secondary">
-                                   <p><b>Previous close:</b> 12.39</p>
-                                    <p><b>Open: </b>14.22</p>
-                                    <p><b>52 Week High:</b>13.50 </p>
-                                </div>
-                                </div>
-                                </div>
-                            <div class="card-footer text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Update now</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 p-2">
-                         <div class="card card-common">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                     <i class="fas fa-comment-dots fa-3x text-warning"></i>
-                                <div class="text-right text-secondary">
-                                   <p><b>Previous close:</b> 12.39</p>
-                                    <p><b>Open: </b>14.22</p>
-                                    <p><b>52 Week High:</b>13.50 </p>
-                                </div>
-                                </div>
-                                </div>
-                            <div class="card-footer text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Update now</span>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
+
+
                 </div>
             </div>
         </div>
@@ -85,15 +54,106 @@
 </section>
 
 <!-- end cards -->
+<!-- Section divider -->
+<div class="container-fluid">
+    <div class="row pt-md-5 mt-md-3 mb-5">
+        <div class="col-md-8 col-xl-10 ml-auto">
+            <h1>
+                <p>Portfolio Performance</p>
+                <hr>
+            </h1>
+        </div>
+    </div>
+</div>
+<!-- Section divider end -->
 
-
-
+<!-- amCharts 4 Resources -->
+<script src="//cdn.amcharts.com/lib/4/core.js"></script>
+<script src="//cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="//cdn.amcharts.com/lib/4/maps.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 <!--chart -->
 
 <section>
 <div class="container-fluid">
     <div class="row pt-md-5 mt-md-3 mb-5">
-        <div class="col-md-8 col-xl-10 ml-auto card card-common" id="chart-container">
+        <div class="col-md-8 col-xl-10 ml-auto card card-common" >{# id="chart-container"> #}
+            <!-- Styles -->
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+</style>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+chart.paddingRight = 20;
+
+var data = [];
+var visits = 10;
+var previousValue;
+
+for (var i = 0; i < 100; i++) {
+    visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+
+    if(i > 0){
+        // add color to previous data item depending on whether current value is less or more than previous value
+        if(previousValue <= visits){
+            data[i - 1].color = chart.colors.getIndex(0);
+        }
+        else{
+            data[i - 1].color = chart.colors.getIndex(5);
+        }
+    }
+
+    data.push({ date: new Date(2018, 0, i + 1), value: visits });
+    previousValue = visits;
+}
+
+chart.data = data;
+
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.grid.template.location = 0;
+dateAxis.renderer.axisFills.template.disabled = true;
+dateAxis.renderer.ticks.template.disabled = true;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+valueAxis.renderer.minWidth = 35;
+valueAxis.renderer.axisFills.template.disabled = true;
+valueAxis.renderer.ticks.template.disabled = true;
+
+var series = chart.series.push(new am4charts.LineSeries());
+series.dataFields.dateX = "date";
+series.dataFields.valueY = "value";
+series.strokeWidth = 2;
+series.tooltipText = "value: {valueY}, day change: {valueY.previousChange}";
+
+// set stroke property field
+series.propertyFields.stroke = "color";
+
+chart.cursor = new am4charts.XYCursor();
+
+var scrollbarX = new am4core.Scrollbar();
+chart.scrollbarX = scrollbarX;
+
+dateAxis.start = 0.7;
+dateAxis.keepSelection = true;
+
+
+}); // end am4core.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
 
         </div>
     </div>
@@ -101,21 +161,35 @@
 </section>
 
 
-
-
-
 <!--chart end-->
-<!--Stocktwits -->
+
+    <!-- Section divider -->
 <div class="container-fluid">
-     <div class="row pt-md-5 mt-md-3 mb-5">
-         <div class="col-md-8 col-xl-10 ml-auto ">
-    <div id="stocktwits-widget-news"></div><a href='https://stocktwits.com' style='font-size: 0px;'>Stocktwits</a>
-<script type="text/javascript" src="https://api.stocktwits.com/addon/widget/2/widget-loader.min.js"></script>
-<script type="text/javascript">
-STWT.Widget({container: 'stocktwits-widget-news', symbol: 'BTC.X', width: '300', height: '300', limit: '15', scrollbars: 'true', streaming: 'true', title: 'Bitcoin Mentions', style: {link_color: '4871a8', link_hover_color: '4871a8', header_text_color: '000000', border_color: 'cecece', divider_color: 'cecece', divider_color: 'cecece', divider_type: 'solid', box_color: 'f5f5f5', stream_color: 'ffffff', text_color: '000000', time_color: '999999'}});
-</script>
+    <div class="row pt-md-5 mt-md-3 mb-5">
+        <div class="col-md-8 col-xl-10 ml-auto">
+            <h1>
+                <p>Asset News</p>
+                <hr>
+            </h1>
+        </div>
+    </div>
+</div>
+<!-- Section divider end -->
+
+<!--Stocktwits -->
+    {% for i in asset %}
+<div class="container-fluid mx-auto">
+     <div class="row pt-md-5 mt-md-3 mb-5 mx-3">
+         <div class="col-md-8 col-xl-8 ml-auto ">
+            <div id="stocktwits-widget-news"></div><a href='https://stocktwits.com' style='font-size: 0px;'>Stocktwits</a>
+         </div>
      </div>
 </div>
+<script type="text/javascript" src="https://api.stocktwits.com/addon/widget/2/widget-loader.min.js"></script>
+<script type="text/javascript">
+STWT.Widget({container: 'stocktwits-widget-news', symbol: '{{ i.name }}.X', width: '400', height: '300', limit: '15', scrollbars: 'true', streaming: 'true', title: '{{i.name}} Mentions', style: {link_color: '4871a8', link_hover_color: '4871a8', header_text_color: '000000', border_color: 'cecece', divider_color: 'cecece', divider_color: 'cecece', divider_type: 'solid', box_color: 'f5f5f5', stream_color: 'ffffff', text_color: '000000', time_color: '999999'}});
+</script>
+{% endfor %}
 <!-- end Stocktwits -->
 
 {% endblock %}

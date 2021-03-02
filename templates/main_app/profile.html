@@ -9,7 +9,9 @@
                     <div class="col-xl-3 col-sm-6 p-2">
                         <h2>
                             <p>{{ user }}'s Profile Page</p>
-
+                             {% for i in asset %}
+                            <p> {{ i.name }} : {{ i.price }} </p>
+                            {% endfor %}
                         </h2>
 
                     </div>

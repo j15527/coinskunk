@@ -2,6 +2,38 @@
 
 {% block content %}
 
-<h1 class="text-center">This is the home page</h1>
+    <div class="container">
+        <div class="row row-cols-2">
+            <div class="col">
+                <h1><p>Welcome to CoinSkunk</p></h1>
+                </p>
+                <p></p>
+                <h4>
+                    <p>The worlds best crypto currency research and portfolio management platform</p>
+                </h4>
+                <ul>
+                    <li>Learn the ins and outs of crypto trading</li>
+                    <li>Grow your portfolio with the help of experienced community members</li>
+                    <li>Share research insights and the gem coins you find</li>
+                </ul>
+                <form>
+                    <div class="mb-3">
+
+                        <h5><p>Join Our Mailing list For Exclusive Offers!</p></h5>
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">Don't worry, we don't share with fiat loving bag holders!</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            {% load static %}
+            <div class="col"><img src="{% static 'img/skunk-icon.png' %}" alt=""></div>
+
+        </div>
+    </div>
+
+
 
 {% endblock %}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="title icon" href="images/title-img.png">
     {% load static %}
-    <link rel="apple-touch-icon" sizes="180x180" href="{%  static 'img/apple-touch-icon.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
@@ -13,8 +13,24 @@
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    {#<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">#}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+            integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+            crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!--{% load static %} -->
@@ -31,10 +47,10 @@
 
 <body>
 <nav class="navbar navbar-expand-md navbar-light">
-<button class="navbar-toggler ml-auto mb-2 bg-light"
-        type="button" data-toggle="collapse" data-target="#myNavBar">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <button class="navbar-toggler ml-auto mb-2 bg-light"
+            type="button" data-toggle="collapse" data-target="#myNavBar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="myNavBar">
         <div class="container-fluid">
             <div class="row">
@@ -42,30 +58,31 @@
                 <div class="col-md-4 col-xl-2 col-lg-3 sidebar fixed-top">
                     <a href="#" class="navbar-brand
                     text-white d-block
-                    mx-auto text-center py-3 mb-4 bottom-border" >CoinSkunk</a>
+                    mx-auto text-center py-3 mb-4 bottom-border">CoinSkunk</a>
                     <div class="bottom-border pb-3">
                         {% load static %}
                         <img src="{{ profile_pic }}" width="60" class="rounded-circle mr-3" alt="">
-                        <a href="{% url 'profile' %}" class="text-white" >{{ user.username }}</a>
+                        <a href="{% url 'profile' %}" class="text-white">{{ user.username }}</a>
                     </div>
 
                     <!-- sidebar nav elements -->
                     <div id="side-bar-elements">
-                    <ul class="navbar-nav flex-column mt-4">
-                        <li class="nav-item "> <a href="{% url 'main' %}" class="nav-link text-white p-3 mb-2 active">
-                            <i class="fas fa-home text-light fa-lg mr-3 "></i>Dashboard
-                        </a> </li>
-                    </ul>
-                     <ul class="navbar-nav flex-column mt-4">
-                        <li class="nav-item"> <a href="{% url 'assets' %}" class="nav-link text-white p-3 mb-2" >
-                            <i class="fab fa-bitcoin text-light fa-lg mr-3 "></i>Assets
-                        </a> </li>
-                    </ul>
-                     <ul class="navbar-nav flex-column mt-4">
-                        <li class="nav-item"> <a href="#" class="nav-link text-white p-3 mb-2 ">
-                            <i class="fas fa-cog text-light fa-lg mr-3 "></i>Settings
-                        </a> </li>
-                    </ul>
+                        <ul class="navbar-nav flex-column mt-4">
+                            <li class="nav-item "><a href="{% url 'main' %}"
+                                                     class="nav-link text-white p-3 mb-2 active">
+                                <i class="fas fa-home text-light fa-lg mr-3 "></i>Dashboard
+                            </a></li>
+                        </ul>
+                        <ul class="navbar-nav flex-column mt-4">
+                            <li class="nav-item"><a href="{% url 'assets' %}" class="nav-link text-white p-3 mb-2">
+                                <i class="fab fa-bitcoin text-light fa-lg mr-3 "></i>Assets
+                            </a></li>
+                        </ul>
+                        <ul class="navbar-nav flex-column mt-4">
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 ">
+                                <i class="fas fa-cog text-light fa-lg mr-3 "></i>Settings
+                            </a></li>
+                        </ul>
                     </div>
                     <!-- end sidebar nav -->
                 </div>
@@ -78,18 +95,28 @@
                         <div class="col-md-4"><h4 class="text-light text-uppercase mb-0">Dashboard</h4>
                         </div>
                         <div class="col-md-5">
-                            <form action="">
+                            <form action="{% url 'search' %}" method="get">
+
                                 <div class="input-group">
-                                    <input type="text" class="form-control search-input" placeholder="Search">
-                                    <button type="button" class="btn btn-light search-button"><i class="fas fa-search text-danger"></i></button>
+                                    {% csrf_token %}
+                                    <input type="text" name="search-box" class="form-control search-input"
+                                           placeholder="Search">
+                                    <input type="submit" name="search-btn" class="btn btn-light search-button"><i
+                                        class="fas fa-search text-danger"></i></input>
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-3">
                             <ul class="navbar-nav">
-                                <li class="nav-item icon-parent"><a href="#" class="nav-link badge badge-dark text-light">9<i class="fas fa-comments text-muted fa-lg"></i></a></li>
-                                <li class="nav-item icon-parent"><a href="#" class="nav-link badge badge-dark text-light">2<i class="fas fa-bell text-muted fa-lg"></i></a></li>
-                                <li class="nav-item ml-md-auto"><a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out"><i class="fas fa-sign-out-alt text-danger fa-lg"></i></a></li>
+                                <li class="nav-item icon-parent"><a href="#"
+                                                                    class="nav-link badge badge-dark text-light">9<i
+                                        class="fas fa-comments text-muted fa-lg"></i></a></li>
+                                <li class="nav-item icon-parent"><a href="#"
+                                                                    class="nav-link badge badge-dark text-light">2<i
+                                        class="fas fa-bell text-muted fa-lg"></i></a></li>
+                                <li class="nav-item ml-md-auto"><a href="#" class="nav-link" data-toggle="modal"
+                                                                   data-target="#sign-out"><i
+                                        class="fas fa-sign-out-alt text-danger fa-lg"></i></a></li>
                             </ul>
 
                         </div>
@@ -104,23 +131,75 @@
 
 <!-- sign-out modal-->
 <div class="modal fade" id="sign-out">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title">Logout</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-            Are you sure you want to logout?
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-success" data-dismiss="modal"> Stay</button>
-            <a class="btn btn-danger" href="{% url 'logout' %}" role="button"> Logout</a>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Logout</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to logout?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal"> Stay</button>
+                <a class="btn btn-danger" href="{% url 'logout' %}" role="button"> Logout</a>
+            </div>
         </div>
     </div>
 </div>
-</div>
 <!--end sign-out modal-->
+<!--Buy modal -->
+<div class="modal fade" id="buy">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Buy</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Enter amount to purchase.</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal"> Buy</button>
+                <a class="btn btn-danger" data-dismiss="modal" href="#" role="button"> Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Buy modal end-->
+
+
+<!--Sell modal -->
+<div class="modal fade" id="sell">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sell</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Enter amount to sell.</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal"> Sell</button>
+                <a class="btn btn-danger" data-dismiss="modal" href="#" role="button"> Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End sell modal-->
 {% block content %}
 
 
@@ -130,28 +209,28 @@
 
 
 <!-- footer -->
-<footer>
+<footer id="footer">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-10 col-ld-9 col-md-8 ml-auto">
                 <div class="row border-top pt-3">
                     <div class="col-lg-6 text-center">
-                    <ul class="list-inline">
-                        <li class="list-inline-item mr-2">
-                            <a href="#" class="text-dark">CoinSkunk</a>
-                        </li>
-                        <li class="list-inline-item mr-2">
-                            <a href="#" class="text-dark">About</a>
-                        </li>
-                        <li class="list-inline-item mr-2">
-                            <a href="#" class="text-dark">Support</a>
-                        </li>
-                        <li class="list-inline-item mr-2">
-                            <a href="#" class="text-dark">News</a>
-                        </li>
-                    </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item mr-2">
+                                <a href="#" class="text-dark">CoinSkunk</a>
+                            </li>
+                            <li class="list-inline-item mr-2">
+                                <a href="#" class="text-dark">About</a>
+                            </li>
+                            <li class="list-inline-item mr-2">
+                                <a href="#" class="text-dark">Support</a>
+                            </li>
+                            <li class="list-inline-item mr-2">
+                                <a href="#" class="text-dark">News</a>
+                            </li>
+                        </ul>
                     </div>
-                     <div class="col-lg-6 text-center">
+                    <div class="col-lg-6 text-center">
                         <p>&copy; 2021 Andrew Babcock PDX Code Guild</p>
                     </div>
                 </div>
@@ -160,12 +239,22 @@
     </div>
 
 </footer>
+
+
 <!-- end footer -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    {% load static %}
-    <script src="{% static "js/script.js" %}"></script>
+{#<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>#}
+{#<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>#}
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+{% load static %}
+<script src="{% static "js/script.js" %}"></script>
 
 </body>
 </html>
